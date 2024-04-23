@@ -11,7 +11,7 @@ const year = document.querySelector(".year");
 setInterval(() => {
   const currentTime = new Date();
 
-  // Time Format:
+  // Time Format
   if (currentTime.getHours() < "0" || currentTime.getHours() > "12") {
     pm.style.color = "#fff";
     pm.classList.add("shadow");
@@ -21,7 +21,7 @@ setInterval(() => {
     am.classList.add("shadow");
   }
 
-  // time:
+  // Time
   hours.innerHTML = `${
     currentTime.getHours() < "10" ? "0" : ""
   }${currentTime.getHours()}`;
@@ -34,7 +34,7 @@ setInterval(() => {
     currentTime.getSeconds() < "10" ? "0" : ""
   }${currentTime.getSeconds()}`;
 
-  // Date:
+  // Date
   weekDay.innerHTML = Intl.DateTimeFormat("default", {
     weekday: "long",
   }).format(currentTime);
