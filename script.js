@@ -11,6 +11,7 @@ const year = document.querySelector(".year");
 setInterval(() => {
   const currentTime = new Date();
 
+  // Time Format:
   if (currentTime.getHours() < "0" || currentTime.getHours() > "12") {
     pm.style.color = "#fff";
     pm.classList.add("shadow");
@@ -19,22 +20,30 @@ setInterval(() => {
     am.style.color = "#fff";
     am.classList.add("shadow");
   }
-  // time section
-  hours.textContent =
-    (currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours();
-  minutes.textContent =
-    (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
-  seconds.textContent =
-    (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
 
-  // date section
-  // weekDay.textContent = weekDays[currentTime.getDay()];
-  weekDay.textContent = Intl.DateTimeFormat("default", {
+  // time:
+  hours.innerHTML = `${
+    currentTime.getHours() < "10" ? "0" : ""
+  }${currentTime.getHours()}`;
+
+  minutes.innerHTML = `${
+    currentTime.getMinutes() < "10" ? "0" : ""
+  }${currentTime.getMinutes()}`;
+
+  seconds.innerHTML = `${
+    currentTime.getSeconds() < "10" ? "0" : ""
+  }${currentTime.getSeconds()}`;
+
+  // Date:
+  weekDay.innerHTML = Intl.DateTimeFormat("default", {
     weekday: "long",
   }).format(currentTime);
-  day.textContent = currentTime.getDate();
-  month.textContent = Intl.DateTimeFormat("default", { month: "long" }).format(
-    currentTime
-  );
-  year.textContent = currentTime.getFullYear();
+
+  day.innerHTML = currentTime.getDate();
+
+  month.innerHTML = Intl.DateTimeFormat("default", {
+    month: "long",
+  }).format(currentTime);
+
+  year.innerHTML = currentTime.getFullYear();
 }, 1000);
