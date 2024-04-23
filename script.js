@@ -10,9 +10,12 @@ const year = document.querySelector(".year");
 
 setInterval(() => {
   const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  const currentMinute = currentTime.getMinutes();
+  const currentSeconds = currentTime.getSeconds();
 
   // Time Format
-  if (currentTime.getHours() < "0" || currentTime.getHours() > "12") {
+  if (currentHour < "0" || currentHour > "12") {
     pm.style.color = "#fff";
     pm.classList.add("shadow");
   } else {
@@ -22,17 +25,11 @@ setInterval(() => {
   }
 
   // Time
-  hours.innerHTML = `${
-    currentTime.getHours() < "10" ? "0" : ""
-  }${currentTime.getHours()}`;
+  hours.innerHTML = `${currentHour < "10" ? "0" : ""}${currentHour}`;
 
-  minutes.innerHTML = `${
-    currentTime.getMinutes() < "10" ? "0" : ""
-  }${currentTime.getMinutes()}`;
+  minutes.innerHTML = `${currentMinute < "10" ? "0" : ""}${currentMinute}`;
 
-  seconds.innerHTML = `${
-    currentTime.getSeconds() < "10" ? "0" : ""
-  }${currentTime.getSeconds()}`;
+  seconds.innerHTML = `${currentSeconds < "10" ? "0" : ""}${currentSeconds}`;
 
   // Date
   weekDay.innerHTML = Intl.DateTimeFormat("default", {
